@@ -4,22 +4,20 @@ server:
     include-stacktrace: never
 
 spring:
-  thymeleaf:
-    cache: false
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/auth/realms/workshop
       client:
         registration:
           keycloak:
             client-id: 'library-client'
             client-secret: '9584640c-3804-4dcd-997b-93593cfb9ea7'
-            authorizationGrantType: authorization_code
-            redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-            scope: openid
+            authorization-grant-type: authorization_code
+            redirect-uri: 'http://localhost:9090/login/oauth2/code/keycloak'
+            scope: 'openid'
         provider:
           keycloak:
-            issuerUri: http://localhost:8081/auth/realms/workshop
+            issuer-uri: http://localhost:8081/auth/realms/workshop
             user-name-attribute: name
-
-library:
-  server: http://localhost:9091
