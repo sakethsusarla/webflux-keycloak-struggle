@@ -1,0 +1,5 @@
+rootProject.name = 'webflux-keycloak-struggle'
+include ':resource-server'
+include ':oidc-client'
+
+
